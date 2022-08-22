@@ -6,9 +6,26 @@ import Output from "./Output";
 export default function Calculator() {
   const [input, setInput] = useState("0");
 
-  const evaluate = (character) => {
+  const evaluate = (input) => {
     try {
-      const res = eval(character);
+      if (
+        input.endsWith("*") ||
+        input.endsWith("/") ||
+        input.endsWith("+") ||
+        input.endsWith("-")
+      ) {
+        if (
+          input.endsWith("*-") ||
+          input.endsWith("/-") ||
+          input.endsWith("*+") ||
+          input.endsWith("/+")
+        ) {
+          input = input.substring(0, input.length - 2);
+        } else {
+          input = input.substring(0, input.length - 1);
+        }
+      }
+      const res = eval(input);
       const rStr = String(res);
       if (rStr.indexOf(".") >= 0) {
         return res.toFixed(3);
@@ -33,8 +50,8 @@ export default function Calculator() {
   const backSpace = (character) => {
     if (input.length <= 1) setInput("0");
     else
-      setInput((prevcharacter) =>
-        String(prevcharacter).substring(0, prevcharacter.length - 1)
+      setInput((prevInput) =>
+        String(prevInput).substring(0, prevInput.length - 1)
       );
   };
 
@@ -46,7 +63,7 @@ export default function Calculator() {
     }
     // String Evaluation when "=" is pressed
     else if (character == "=") {
-      setInput((prevcharacter) => String(evaluate(prevcharacter)));
+      setInput((prevInput) => String(evaluate(prevInput)));
     }
     // BackSpace Handling
     else if (character == "ce") {
@@ -63,8 +80,8 @@ export default function Calculator() {
           input.substring(input.length - 2, input.length) == "/0")
       ) {
         setInput(
-          (prevcharacter) =>
-            prevcharacter.substring(0, prevcharacter.length - 1) + character
+          (prevInput) =>
+            prevInput.substring(0, prevInput.length - 1) + character
         );
       }
       // Sign Handling when zero comes before a sign
@@ -82,8 +99,8 @@ export default function Calculator() {
           input.substring(input.length - 1, input.length) == "*")
       ) {
         setInput(
-          (prevcharacter) =>
-            prevcharacter.substring(0, prevcharacter.length - 1) + character
+          (prevInput) =>
+            prevInput.substring(0, prevInput.length - 1) + character
         );
       }
       //Mutiple Sign Handling --> last pressed sign replaces the previous(if there is any)
@@ -101,19 +118,19 @@ export default function Calculator() {
           (character == "/" || character == "*")
         ) {
           setInput(
-            (prevcharacter) =>
-              prevcharacter.substring(0, prevcharacter.length - 2) + character
+            (prevInput) =>
+              prevInput.substring(0, prevInput.length - 2) + character
           );
         } else {
           setInput(
-            (prevcharacter) =>
-              prevcharacter.substring(0, prevcharacter.length - 1) + character
+            (prevInput) =>
+              prevInput.substring(0, prevInput.length - 1) + character
           );
         }
       }
       //Setting Input to Output Field
       else {
-        setInput((prevcharacter) => prevcharacter + character);
+        setInput((prevInput) => prevInput + character);
       }
     }
   };

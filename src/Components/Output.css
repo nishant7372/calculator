@@ -1,0 +1,43 @@
+.output-field {
+  border-radius: 4px;
+  height: 70%;
+  width: 80%;
+  background-color: black;
+  color: white;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.inner-field {
+  border-radius: 4px;
+  height: 70%;
+  width: 70%;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(20, 20, 20),
+    rgb(15, 15, 15)
+  );
+  color: white;
+  text-align: right;
+  margin-right: 4%;
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  font-size: medium;
+}
+
+.wrap {
+  word-break: break-word;
+}
+
+.light {
+  background-color: rgba(255, 0, 0, 0.844);
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  margin-right: 6%;
+  box-shadow: 0 0 30px 9px rgba(255, 0, 0, 0.933);
+}

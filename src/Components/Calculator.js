@@ -30,8 +30,16 @@ export default function Calculator() {
     }
   };
 
+  const backSpace = (character) => {
+    if (input.length <= 1) setInput("0");
+    else
+      setInput((prevcharacter) =>
+        String(prevcharacter).substring(0, prevcharacter.length - 1)
+      );
+  };
+
   const selectNum = (character) => {
-    character = parse(character); // Parsing the character
+    character = parse(character); // Parsing the character for Actual Meaning
     // Handling Errors
     if (input == "Error!" || input == "undefined" || input == "Infinity") {
       setInput("0");
@@ -42,15 +50,11 @@ export default function Calculator() {
     }
     // BackSpace Handling
     else if (character == "ce") {
-      if (input.length <= 1) setInput("0");
-      else
-        setInput((prevcharacter) =>
-          String(prevcharacter).substring(0, prevcharacter.length - 1)
-        );
+      backSpace(character);
     }
     //else case
     else {
-      // Sign Handling when zero comes before a sign
+      // Sign Handling when zero comes after a sign
       if (
         input.length > 1 &&
         (input.substring(input.length - 2, input.length) == "+0" ||
@@ -62,7 +66,9 @@ export default function Calculator() {
           (prevcharacter) =>
             prevcharacter.substring(0, prevcharacter.length - 1) + character
         );
-      } else if (
+      }
+      // Sign Handling when zero comes before a sign
+      else if (
         input == "0" &&
         character.charCodeAt(0) < 58 &&
         character.charCodeAt(0) > 47
@@ -71,17 +77,39 @@ export default function Calculator() {
       }
       //Mutiple Sign Handling --> last pressed sign replaces the previous(if there is any)
       else if (
-        (character == "+" ||
-          character == "-" ||
-          character == "/" ||
-          character == "*") &&
-        (input.charCodeAt(input.length - 1) > 57 ||
-          input.charCodeAt(input.length - 1) < 48)
+        (character == "/" || character == "*") &&
+        (input.substring(input.length - 1, input.length) == "/" ||
+          input.substring(input.length - 1, input.length) == "*")
       ) {
         setInput(
           (prevcharacter) =>
             prevcharacter.substring(0, prevcharacter.length - 1) + character
         );
+      }
+      //Mutiple Sign Handling --> last pressed sign replaces the previous(if there is any)
+      else if (
+        (character == "+" ||
+          character == "-" ||
+          character == "/" ||
+          character == "*") &&
+        (input.substring(input.length - 1, input.length) == "+" ||
+          input.substring(input.length - 1, input.length) == "-")
+      ) {
+        if (
+          (input.substring(input.length - 2, input.length - 1) == "*" ||
+            input.substring(input.length - 2, input.length - 1) == "/") &&
+          (character == "/" || character == "*")
+        ) {
+          setInput(
+            (prevcharacter) =>
+              prevcharacter.substring(0, prevcharacter.length - 2) + character
+          );
+        } else {
+          setInput(
+            (prevcharacter) =>
+              prevcharacter.substring(0, prevcharacter.length - 1) + character
+          );
+        }
       }
       //Setting Input to Output Field
       else {

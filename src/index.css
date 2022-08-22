@@ -5,12 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
   background-image: url("/public/img/bg.png");
-  background-size: cover;
   background-position: center;
-  display: grid;
-  align-items: center;
-  justify-items: center;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
 }
 
 code {

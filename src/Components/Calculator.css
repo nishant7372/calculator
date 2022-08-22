@@ -10,6 +10,17 @@
   margin: 5vh auto;
 }
 
+@media screen and (max-height: 650px) {
+  .container {
+    margin: 5vh auto;
+  }
+}
+@media screen and (min-height: 650px) {
+  .container {
+    margin: 10vh auto;
+  }
+}
+
 .head {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;

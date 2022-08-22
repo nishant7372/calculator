@@ -6,7 +6,6 @@
   width: 55px;
   height: 55px;
   display: block;
-  transition: 0.4s;
   overflow: hidden;
   border: none;
 }
@@ -15,14 +14,13 @@
   -ms-transform: translateY(1px);
   -webkit-transform: translateY(1px);
   transform: translateY(1px);
-  border-bottom: none;
-  border-left: none;
+  border: none;
 }
 
 .white-btn {
   color: white;
   background-image: linear-gradient(to bottom, rgb(12, 5, 101), rgb(2, 1, 11));
-  border-bottom: solid 1.4px white;
+  border: solid 1.4px white;
   border-left: solid 1.4px white;
 }
 
@@ -33,13 +31,13 @@
     rgb(255, 42, 0)
   );
   color: white;
-  border-bottom: solid 2px white;
+  border: solid 2px white;
   border-left: solid 2px white;
 }
 
 .black-btn {
   background-image: linear-gradient(to bottom, rgb(16, 16, 16), rgb(0, 0, 0));
   color: white;
-  border-bottom: solid 1.8px #45aebc;
+  border: solid 1.8px #45aebc;
   border-left: solid 1.8px #45aebc;
 }

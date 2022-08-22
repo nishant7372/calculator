@@ -52,9 +52,20 @@ export default function Calculator() {
     else {
       // Sign Handling when zero comes before a sign
       if (
+        input.length > 1 &&
+        (input.substring(input.length - 2, input.length) == "+0" ||
+          input.substring(input.length - 2, input.length) == "-0" ||
+          input.substring(input.length - 2, input.length) == "*0" ||
+          input.substring(input.length - 2, input.length) == "/0")
+      ) {
+        setInput(
+          (prevcharacter) =>
+            prevcharacter.substring(0, prevcharacter.length - 1) + character
+        );
+      } else if (
         input == "0" &&
         character.charCodeAt(0) < 58 &&
-        character.charCodeAt(0) > 48
+        character.charCodeAt(0) > 47
       ) {
         setInput(character);
       }
@@ -82,7 +93,6 @@ export default function Calculator() {
   return (
     <div className="container">
       <div className="head">
-        <div className="on-off-btn"></div>
         <div className="name">CALCI 7372</div>
       </div>
       <div className="output">

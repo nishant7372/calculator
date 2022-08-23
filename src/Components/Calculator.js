@@ -58,7 +58,12 @@ export default function Calculator() {
   const selectNum = (character) => {
     character = parse(character); // Parsing the character for Actual Meaning
     // Handling Errors
-    if (input == "Error!" || input == "undefined" || input == "Infinity") {
+    if (
+      input == "Error!" ||
+      input == "undefined" ||
+      input == "Infinity" ||
+      input == "NaN"
+    ) {
       setInput("0");
     }
     // String Evaluation when "=" is pressed

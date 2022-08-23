@@ -13,12 +13,11 @@
 }
 
 .CalcButton:active {
-  -ms-transform: translateY(1px);
+  /* -ms-transform: translateY(1px);
   -webkit-transform: translateY(1px);
-  transform: translateY(1px);
+  transform: translateY(1px); */
   border: none;
   box-shadow: none;
-  cursor: default;
 }
 
 .blue-btn {

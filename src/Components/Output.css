@@ -34,22 +34,34 @@
   hyphens: none;
 }
 
-.indicator-dark {
-  background-color: rgba(255, 0, 0, 0.844);
+.indicator {
   border-radius: 50%;
   width: 8px;
   height: 8px;
   margin-right: 6%;
-  box-shadow: 0 0 30px 9px rgba(255, 0, 0, 0.933);
-  cursor: pointer;
 }
 
-.indicator-light {
-  background-color: rgba(0, 225, 255, 0.844);
-  border-radius: 50%;
-  width: 8px;
-  height: 8px;
-  margin-right: 6%;
-  box-shadow: 0 0 30px 9px rgba(0, 204, 255, 0.933);
-  cursor: pointer;
+.ind-pink {
+  background-color: #ff00cc;
+  box-shadow: 0 0 30px 9px #ff00cc;
+}
+
+.ind-skyblue {
+  background-color: #76d7ea;
+  box-shadow: 0 0 30px 9px #76d7ea;
+}
+
+.ind-red {
+  background-color: #ff0004;
+  box-shadow: 0 0 30px 9px #ff0004;
+}
+
+.ind-green {
+  background-color: #87ff2a;
+  box-shadow: 0 0 30px 9px #87ff2a;
+}
+
+.ind-yellow {
+  background-color: #fdff00;
+  box-shadow: 0 0 30px 9px #fdff00;
 }

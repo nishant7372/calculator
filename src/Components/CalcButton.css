@@ -1,3 +1,5 @@
+/* --------------------  Number Pad - Common styles ---------------------------*/
+
 .CalcButton {
   aspect-ratio: 1;
   place-items: center;
@@ -15,29 +17,64 @@
   -webkit-transform: translateY(1px);
   transform: translateY(1px);
   border: none;
+  box-shadow: none;
 }
 
-.blue-btn {
+/* --------------------------------------------------------------------------*/
+
+/* --------------------  Number Pad - Dark Theme ---------------------------*/
+
+.blue-btn-dark {
+  color: white;
+  background-image: radial-gradient(rgb(12, 5, 101), rgb(2, 1, 11));
+  border: solid 3px rgb(12, 5, 101);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.03);
+}
+
+.orange-btn-dark {
+  color: white;
+  background-image: radial-gradient(rgb(250, 107, 5), rgb(255, 42, 0));
+  border: solid 3px rgb(250, 91, 5);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.03);
+}
+
+.black-btn-dark {
+  color: white;
+  background-image: radial-gradient(rgb(35, 35, 35), rgb(4, 4, 4));
+  border: solid 5px rgb(18, 18, 18);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.06);
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-weight: bold; */
+}
+
+/* --------------------------------------------------------------------------*/
+
+/* --------------------  Number Pad - Light Theme ---------------------------*/
+
+.blue-btn-light {
   color: white;
   background-image: linear-gradient(to bottom, rgb(12, 5, 101), rgb(2, 1, 11));
   border: solid 1.4px white;
   border-left: solid 1.4px white;
 }
 
-.orange-btn {
+.orange-btn-light {
+  color: white;
   background-image: linear-gradient(
     to bottom,
     rgb(250, 107, 5),
     rgb(255, 42, 0)
   );
-  color: white;
   border: solid 2px white;
   border-left: solid 2px white;
 }
 
-.black-btn {
-  background-image: linear-gradient(to bottom, rgb(16, 16, 16), rgb(0, 0, 0));
+.black-btn-light {
   color: white;
+  background-image: linear-gradient(to bottom, rgb(16, 16, 16), rgb(0, 0, 0));
   border: solid 1.8px #45aebc;
   border-left: solid 1.8px #45aebc;
 }
+
+/* --------------------------------------------------------------------------*/

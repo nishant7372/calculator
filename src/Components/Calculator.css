@@ -1,3 +1,5 @@
+/*------------------------ Calculator Container Styles -------------------------------*/
+
 .container {
   max-height: 600px;
   height: 90vh;
@@ -22,6 +24,10 @@
   }
 }
 
+/*------------------------------------------------------------------------------------*/
+
+/*-------------------------- Container Header Styles ---------------------------------*/
+
 .head {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -30,31 +36,6 @@
   display: flex;
   justify-content: right;
   align-items: center;
-}
-
-.output {
-  background-image: linear-gradient(
-    to bottom,
-    rgb(24, 24, 24),
-    rgb(23, 23, 23)
-  );
-  height: 22%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-}
-
-.numberPad {
-  background-image: linear-gradient(
-    to bottom,
-    rgb(23, 23, 23),
-    rgb(15, 15, 15)
-  );
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  height: 60%;
 }
 
 .name {
@@ -66,3 +47,38 @@
   letter-spacing: 2px;
   font-weight: 500;
 }
+
+/*---------------------------------------------------------------------------------*/
+
+/*-------------------------- OutPut Screen Styles ---------------------------------*/
+
+.output {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(35, 35, 35),
+    rgb(32, 32, 32)
+  );
+  height: 22%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+/*---------------------------------------------------------------------------------*/
+
+/*-------------------------- NumberPad Styles -------------------------------------*/
+
+.numberPad {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(32, 32, 32),
+    rgb(20, 20, 20)
+  );
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 60%;
+}
+
+/*---------------------------------------------------------------------------------*/

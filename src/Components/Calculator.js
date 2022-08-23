@@ -5,6 +5,11 @@ import Output from "./Output";
 
 export default function Calculator() {
   const [input, setInput] = useState("0");
+  const [theme, setTheme] = useState("light");
+
+  const changeTheme = (mode) => {
+    setTheme(mode);
+  };
 
   const evaluate = (input) => {
     try {
@@ -146,10 +151,10 @@ export default function Calculator() {
         <div className="name">CALCI 7372</div>
       </div>
       <div className="output">
-        <Output input={input} />
+        <Output input={input} changeTheme={changeTheme} />
       </div>
       <div className="numberPad">
-        <NumberGrid selectNum={selectNum} />
+        <NumberGrid selectNum={selectNum} theme={theme} />
       </div>
     </div>
   );

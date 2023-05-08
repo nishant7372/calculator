@@ -20,32 +20,22 @@ html {
   font-size: 56.25%; /* 1rem -> 9px*/
 }
 
-html {
+@media screen and (min-width: 370px) and (max-width: 500px) {
+  html {
+    font-size: 65.625%; /* 1 rem = 11px */
+  }
+}
+
+@media screen and (max-width: 370px) {
+  html {
+    font-size: 50%; /* 1 rem = 7.5px */
+  }
+}
+
+html,
+body,
+#root {
   height: 100vh;
-}
-
-@media screen and (min-width: 600px) and (max-width: 1000px) {
-  html {
-    font-size: 50%; /* 1 rem = 8px */
-  }
-}
-
-@media screen and (min-width: 400px) and (max-width: 600px) {
-  html {
-    font-size: 46.875%; /* 1 rem = 7.5px */
-  }
-}
-
-@media screen and (min-width: 300px) and (max-width: 400px) {
-  html {
-    font-size: 43.75%; /* 1 rem = 7px */
-  }
-}
-
-@media screen and (max-width: 300px) {
-  html {
-    font-size: 31.25%; /* 1 rem = 5px */
-  }
 }
 
 body {

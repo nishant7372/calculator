@@ -1,27 +1,19 @@
 /*------------------------ Calculator Container Styles -------------------------------*/
 
+.main {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-self: center;
+}
+
 .container {
-  max-height: 600px;
-  height: 90vh;
-  min-height: 550px;
-  max-width: 350px;
-  width: 25vw;
-  min-width: 340px;
+  height: 62rem;
+  width: 36rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin: 5vh auto;
-}
-
-@media screen and (max-height: 650px) {
-  .container {
-    margin: 5vh auto;
-  }
-}
-@media screen and (min-height: 650px) {
-  .container {
-    margin: 10vh auto;
-  }
+  margin: 3rem auto;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -32,7 +24,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: rgb(255, 153, 0);
-  height: 18%;
+  height: 8rem;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -41,9 +33,9 @@
 .name {
   background-color: black;
   color: rgb(255, 153, 0);
-  padding: 4px 8px;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
-  margin-right: 4%;
+  margin-right: 2rem;
   letter-spacing: 2px;
   font-weight: 500;
 }
@@ -58,7 +50,7 @@
     rgb(35, 35, 35),
     rgb(32, 32, 32)
   );
-  height: 22%;
+  height: 14rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,7 +70,7 @@
   );
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  height: 60%;
+  height: 40rem;
 }
 
 /*---------------------------------------------------------------------------------*/

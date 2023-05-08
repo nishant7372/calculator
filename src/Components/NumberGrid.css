@@ -1,8 +1,37 @@
 .number-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 16px;
-  height: 80%;
-  margin: 10% auto;
-  width: 80%;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  padding: 2rem 3.5rem;
+}
+
+.equalsbutton {
+  background-color: rgb(255, 153, 0);
+  border-radius: 6px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  height: 5.5rem;
+  grid-column: span 2;
+}
+
+.btn-pink {
+  border: solid 1.5px #ff00cc;
+}
+
+.btn-skyblue {
+  border: solid 1.5px #76d7ea;
+}
+
+.btn-red {
+  border: solid 1.5px #ff0004;
+}
+
+.btn-green {
+  border: solid 1.5px #87ff2a;
+}
+
+.btn-yellow {
+  border: solid 1.5px #fdff00;
 }

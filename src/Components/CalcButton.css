@@ -1,21 +1,17 @@
 /* --------------------  Number Pad - Common styles ---------------------------*/
 
 .CalcButton {
-  aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  font-size: large;
-  width: 55px;
-  height: 55px;
+  font-size: 1.6rem;
+  width: 5.5rem;
+  height: 5.5rem;
   display: block;
   overflow: hidden;
   border: none;
 }
 
 .CalcButton:active {
-  /* -ms-transform: translateY(1px);
-  -webkit-transform: translateY(1px);
-  transform: translateY(1px); */
   border: none;
   box-shadow: none;
 }

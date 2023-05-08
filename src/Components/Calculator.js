@@ -2,32 +2,30 @@ import { useState } from "react";
 import "./Calculator.css";
 import NumberGrid from "./NumberGrid";
 import Output from "./Output";
+import { evaluate as evaluateExpression } from "mathjs";
 
 export default function Calculator() {
   const [input, setInput] = useState("0");
 
   const evaluate = (input) => {
     try {
-      if (
+      while (
         input.endsWith("*") ||
-        input.endsWith("/") ||
         input.endsWith("+") ||
-        input.endsWith("-")
+        input.endsWith("-") ||
+        input.endsWith("/")
       ) {
-        if (
-          input.endsWith("*-") ||
-          input.endsWith("/-") ||
-          input.endsWith("*+") ||
-          input.endsWith("/+")
-        ) {
-          input = input.substring(0, input.length - 2);
-        } else {
-          input = input.substring(0, input.length - 1);
-        }
+        input = input.substring(0, input.length - 1);
       }
-      const res = eval(input);
-      const rStr = String(res);
-      if (rStr.indexOf(".") >= 0) {
+
+      const isNumeric = /^[0-9+*/.%-]+$/.test(input);
+      if (!isNumeric) {
+        return "Invalid input!";
+      }
+
+      const res = evaluateExpression(input);
+
+      if (typeof res === "number" && res % 1 !== 0) {
         return res.toFixed(3);
       } else {
         return res;
@@ -39,98 +37,62 @@ export default function Calculator() {
     }
   };
 
-  const parse = (character) => {
-    if (character == "x") {
-      return "*";
-    } else {
-      return character;
-    }
-  };
-
-  const backSpace = (character) => {
+  const backSpace = () => {
     if (input.length <= 1) setInput("0");
-    else
-      setInput((prevInput) =>
-        String(prevInput).substring(0, prevInput.length - 1)
-      );
+    else setInput((prevInput) => prevInput.slice(0, -1));
   };
 
   const selectNum = (character) => {
-    character = parse(character); // Parsing the character for Actual Meaning
     // Handling Errors
-    if (
-      input == "Error!" ||
-      input == "undefined" ||
-      input == "Infinity" ||
-      input == "NaN"
-    ) {
+    const isNumeric = /^[0-9+*/.%-]+$/.test(input);
+    if (!isNumeric || character === "Delete") {
       setInput("0");
     }
     // String Evaluation when "=" is pressed
-    else if (character == "=") {
+    else if (character === "=") {
       setInput((prevInput) => String(evaluate(prevInput)));
     }
     // BackSpace Handling
-    else if (character == "ce") {
-      backSpace(character);
+    else if (character === "Backspace") {
+      backSpace();
     }
-    //else case
-    else {
+    // cannot Insert two adjacent dots or two adjacent %
+    else if (
+      (character === "." || character === "%") &&
+      input.slice(-1) === character
+    ) {
+      return;
+    } else {
       // Sign Handling when zero comes after a sign
       if (
         input.length > 1 &&
-        (input.substring(input.length - 2, input.length) == "+0" ||
-          input.substring(input.length - 2, input.length) == "-0" ||
-          input.substring(input.length - 2, input.length) == "*0" ||
-          input.substring(input.length - 2, input.length) == "/0")
+        ["+0", "-0", "*0", "/0"].includes(input.slice(-2))
       ) {
-        setInput(
-          (prevInput) =>
-            prevInput.substring(0, prevInput.length - 1) + character
-        );
+        setInput((prevInput) => prevInput.slice(0, -1) + character);
       }
       // Sign Handling when zero comes before a sign
-      else if (
-        input == "0" &&
-        character.charCodeAt(0) < 58 &&
-        character.charCodeAt(0) > 47
-      ) {
+      else if (input == "0" && /^\d$/.test(character)) {
         setInput(character);
       }
       //Mutiple Sign Handling --> last pressed sign replaces the previous(if there is any)
       else if (
-        (character == "/" || character == "*") &&
-        (input.substring(input.length - 1, input.length) == "/" ||
-          input.substring(input.length - 1, input.length) == "*")
+        ["/", "*"].includes(character) &&
+        ["/", "*"].includes(input.slice(-1))
       ) {
-        setInput(
-          (prevInput) =>
-            prevInput.substring(0, prevInput.length - 1) + character
-        );
+        setInput((prevInput) => prevInput.slice(0, -1) + character);
       }
       //Mutiple Sign Handling --> last pressed sign replaces the previous(if there is any)
       else if (
-        (character == "+" ||
-          character == "-" ||
-          character == "/" ||
-          character == "*") &&
-        (input.substring(input.length - 1, input.length) == "+" ||
-          input.substring(input.length - 1, input.length) == "-")
+        ["+", "-", "/", "*"].includes(character) &&
+        ["+", "-"].includes(input.slice(-1))
       ) {
         if (
-          (input.substring(input.length - 2, input.length - 1) == "*" ||
-            input.substring(input.length - 2, input.length - 1) == "/") &&
-          (character == "/" || character == "*")
+          ["/", "*"].includes(input.slice(-2, -1)) &&
+          ["/", "*"].includes(character)
         ) {
-          setInput(
-            (prevInput) =>
-              prevInput.substring(0, prevInput.length - 2) + character
-          );
+          setInput((prevInput) => prevInput.slice(0, -2) + character);
         } else {
-          setInput(
-            (prevInput) =>
-              prevInput.substring(0, prevInput.length - 1) + character
-          );
+          setInput((prevInput) => prevInput.slice(0, -1) + character);
         }
       }
       //Setting Input to Output Field
@@ -141,15 +103,17 @@ export default function Calculator() {
   };
 
   return (
-    <div className="container">
-      <div className="head">
-        <div className="name">CALCI 7372</div>
-      </div>
-      <div className="output">
-        <Output input={input} />
-      </div>
-      <div className="numberPad">
-        <NumberGrid selectNum={selectNum} />
+    <div className="main">
+      <div className="container">
+        <div className="head">
+          <div className="name">CALCI 7372</div>
+        </div>
+        <div className="output">
+          <Output input={input} />
+        </div>
+        <div className="numberPad">
+          <NumberGrid selectNum={selectNum} />
+        </div>
       </div>
     </div>
   );

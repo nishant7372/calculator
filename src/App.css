@@ -5,3 +5,15 @@
 button {
   cursor: pointer;
 }
+
+.github {
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
+  font-size: 4rem;
+}
+
+.github a {
+  text-decoration: none;
+  color: black;
+}

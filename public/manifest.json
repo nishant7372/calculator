@@ -1,9 +1,9 @@
 {
-  "short_name": "Calci",
-  "name": "calculator",
+  "short_name": "CALCI 7372",
+  "name": "CALCI 7372",
   "icons": [
     {
-      "src": "calculator.ico",
+      "src": "calculator-icon.ico",
       "sizes": "64x64",
       "type": "image/x-icon"
     },
